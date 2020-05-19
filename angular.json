@@ -119,6 +119,46 @@
           }
         }
       }
+    },
+    "mock-api": {
+      "projectType": "library",
+      "root": "projects/mock-api",
+      "sourceRoot": "projects/mock-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mock-api/tsconfig.lib.json",
+            "project": "projects/mock-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mock-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mock-api/src/test.ts",
+            "tsConfig": "projects/mock-api/tsconfig.spec.json",
+            "karmaConfig": "projects/mock-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mock-api/tsconfig.lib.json",
+              "projects/mock-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "my-app"
 }
